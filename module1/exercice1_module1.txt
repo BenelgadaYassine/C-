@@ -1,0 +1,65 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+
+class Patient {
+private:
+    double masse;
+    double hauteur;
+
+public:
+    (hauteur)
+    void init(double weight, double height) {
+        if (weight > 0 && height > 0) {
+            masse = weight;
+            hauteur = height;
+        } else {
+            masse = 0;
+            hauteur = 0;
+        }
+    }
+
+required format
+    void afficher() const {
+        std::cout << "Patient : " << masse << " kg pour " << hauteur << " m" << std::endl;
+    }
+
+    double poids() const {
+        return masse;
+    }
+
+    double taille() const {
+        return hauteur;
+    }
+
+    double imc() const {
+        if (hauteur == 0) {
+            return 0.0;
+        }
+        return masse / (hauteur * hauteur);
+    }
+};
+
+int main() {
+    Patient p;
+    double weight, height;
+
+    while (true) {
+        std::cout << "Entrez un poids (kg) et une taille (m) : ";
+        std::cin >> weight >> height;
+
+        if (weight == 0 && height == 0) {
+            p.init(0, 0);
+            p.afficher();
+            std::cout << "IMC : " << p.imc() << std::endl;
+            break;
+        }
+
+        p.init(weight, height);
+        p.afficher();
+        std::cout << "IMC : " << std::fixed << std::setprecision(4) << p.imc() << std::endl;
+    }
+
+    return 0;
+}
