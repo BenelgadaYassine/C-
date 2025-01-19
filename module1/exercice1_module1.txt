@@ -9,7 +9,6 @@ private:
     double hauteur;
 
 public:
-    (hauteur)
     void init(double weight, double height) {
         if (weight > 0 && height > 0) {
             masse = weight;
